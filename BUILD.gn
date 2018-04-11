@@ -6,6 +6,17 @@ flutter_git_root = "../flutter"
 
 lib_dir = "linux/library"
 
+# libs with no static variants
+# =====================================
+# gtk-3
+# gdk-3
+# atk-1.0
+# gdk_pixbuf-2.0
+# epoxy
+# GL
+# glfw
+# flutter_engine
+
 config("flutter_embedder_config") {
   include_dirs = [
     "$lib_dir/include",
