@@ -3,4 +3,5 @@
 /gn-build
 /gn-out
 /.gn
+/app
 target
