@@ -1,7 +1,7 @@
 #flutter_engine_dir = "../../engine"
 #flutter_engine_build = "host_release"
 
-flutter_example_root = "example_flutter"
+flutter_example_root = "app"
 flutter_git_root = "lib/flutter"
 
 lib_dir = "linux/library"
