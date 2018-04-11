@@ -1,0 +1,59 @@
+flutter_engine_build = "host_release"
+
+lib_dir = "linux/library"
+
+config("flutter_embedder_config") {
+  include_dirs = [ "$lib_dir/include" ]
+}
+
+shared_library("flutter_embedder") {
+  sources = [
+    "$lib_dir/flutter_embedder.cc",
+    "$lib_dir/plugin_handler.cc",
+  ]
+  include_dirs = [
+    "/usr/include/gtk-3.0",
+    "/usr/include/at-spi2-atk/2.0",
+    "/usr/include/at-spi-2.0",
+    "/usr/include/dbus-1.0",
+    "/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
+    "/usr/include/gio-unix-2.0",
+    "/usr/include/mirclient",
+    "/usr/include/mircore",
+    "/usr/include/mircookie",
+    "/usr/include/cairo",
+    "/usr/include/pango-1.0",
+    "/usr/include/harfbuzz",
+    "/usr/include/atk-1.0",
+    "/usr/include/pixman-1",
+    "/usr/include/freetype2",
+    "/usr/include/libpng12",
+    "/usr/include/gdk-pixbuf-2.0",
+    "/usr/include/glib-2.0",
+    "/usr/include/x86_64-linux-gnu/glib-2.0/include",
+    "/usr/include/jsoncpp",
+  ]
+  ldflags = [
+    "-lgtk-3",
+    "-lgdk-3",
+    "-lpangocairo-1.0",
+    "-lpango-1.0",
+    "-latk-1.0",
+    "-lcairo-gobject",
+    "-lcairo",
+    "-lgdk_pixbuf-2.0",
+    "-lgio-2.0",
+    "-lgobject-2.0",
+    "-lglib-2.0",
+    "-lepoxy",
+    "-lX11",
+    "-ljsoncpp",
+    "-lglfw",
+    "-lGL",
+    "-Llib",
+    "-lflutter_engine",
+    "-Wl,-rpath=\$ORIGIN/lib",
+  ]
+  
+  public_configs = [ ":flutter_embedder_config" ]
+}
