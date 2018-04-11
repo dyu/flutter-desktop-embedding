@@ -12,8 +12,6 @@ config("flutter_embedder_config") {
     "/usr/include/jsoncpp",
   ]
   ldflags = [
-    "-lglfw",
-    "-lflutter_engine",
     "-Wl,-rpath=\$ORIGIN/../lib",
   ]
   lib_dirs = [
@@ -35,10 +33,12 @@ config("flutter_embedder_config") {
     "X11",
     "jsoncpp",
     "GL",
+    "glfw",
+    "flutter_engine",
   ]
 }
 
-shared_library("flutter_embedder") {
+static_library("flutter_embedder") {
   sources = [
     "$lib_dir/src/flutter_embedder.cc",
     "$lib_dir/src/plugin_handler.cc",
@@ -64,7 +64,6 @@ shared_library("flutter_embedder") {
     "/usr/include/glib-2.0",
     "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
   ]
-  
   public_configs = [ ":flutter_embedder_config" ]
 }
 
@@ -76,11 +75,6 @@ executable("flutter_embedder_example") {
     "FLUTTER_EXAMPLE_ROOT=\"$flutter_example_root\"",
     "FLUTTER_GIT_ROOT=\"$flutter_git_root\"",
   ]
-  libs = [
-    "glfw",
-    "flutter_engine",
-  ]
-  ldflags = [ "-shared", "-fPIC" ]
   deps = [ ":flutter_embedder" ]
 }
 
