@@ -239,9 +239,10 @@ GLFWwindow *CreateFlutterWindowInSnapshotMode(size_t initial_width,
                                               size_t initial_height,
                                               const std::string &assets_path,
                                               const std::string &icu_data_path,
-                                              int argc, char **argv) {
+                                              int argc, char **argv,
+                                              const char* title) {
   return CreateFlutterWindow(initial_width, initial_height, "", assets_path, "",
-                             icu_data_path, argc, argv);
+                             icu_data_path, argc, argv, title);
 }
 
 GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
@@ -249,10 +250,11 @@ GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
                                 const std::string &assets_path,
                                 const std::string &packages_path,
                                 const std::string &icu_data_path, int argc,
-                                char **argv) {
+                                char **argv,
+                                const char* title) {
   gtk_init(0, nullptr);
   auto window = glfwCreateWindow(initial_width, initial_height,
-                                 kDefaultWindowTitle, NULL, NULL);
+                                 title ? title : kDefaultWindowTitle, NULL, NULL);
   if (window == nullptr) {
     return nullptr;
   }

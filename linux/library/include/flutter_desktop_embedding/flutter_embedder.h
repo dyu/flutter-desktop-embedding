@@ -41,7 +41,8 @@ GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
                                 const std::string &assets_path,
                                 const std::string &packages_path,
                                 const std::string &icu_data_path, int argc,
-                                char **argv);
+                                char **argv,
+                                const char* title = nullptr);
 
 // Creates a GLFW Window running a Flutter Application in snapshot mode.
 //
@@ -60,7 +61,8 @@ GLFWwindow *CreateFlutterWindowInSnapshotMode(size_t initial_width,
                                               size_t initial_height,
                                               const std::string &assets_path,
                                               const std::string &icu_data_path,
-                                              int argc, char **argv);
+                                              int argc, char **argv,
+                                              const char* title = nullptr);
 
 // Adds a plugin to the flutter_window.
 //

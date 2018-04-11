@@ -44,7 +44,12 @@ int main(int argc, char **argv) {
   auto window = flutter_desktop_embedding::CreateFlutterWindowInSnapshotMode(
       640, 480, flutter_example_root + "/build/flutter_assets",
       flutter_git_root + "/bin/cache/artifacts/engine/linux-x64/icudtl.dat",
-      arg_count, const_cast<char **>(args_arr));
+      arg_count, const_cast<char **>(args_arr),
+      #ifdef FLUTTER_TITLE
+      FLUTTER_TITLE);
+      #else
+      "Flutter");
+      #endif
   if (window == nullptr) {
     glfwTerminate();
     return EXIT_FAILURE;

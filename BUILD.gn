@@ -1,6 +1,8 @@
 #flutter_engine_dir = "../../engine"
 #flutter_engine_build = "host_release"
 
+flutter_title = "Example"
+
 flutter_example_root = "app"
 flutter_git_root = "lib/flutter"
 
@@ -84,6 +86,7 @@ executable("flutter_embedder_example") {
     "linux/example/flutter_embedder_example.cc",
   ]
   defines = [
+    "FLUTTER_TITLE=\"$flutter_title\"",
     "FLUTTER_EXAMPLE_ROOT=\"$flutter_example_root\"",
     "FLUTTER_GIT_ROOT=\"$flutter_git_root\"",
   ]
