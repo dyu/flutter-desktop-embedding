@@ -6,3 +6,11 @@
 3. `gn gen gn-out --args='gcc_cc="gcc" gcc_cxx="g++" symbol_level=0 is_debug=false is_clang=false is_official_build=true'`
 
 4. `ninja -C gn-out`
+
+## Install fonts
+```sh
+sudo apt-get install fonts-roboto
+
+# or link the bundled fonts
+mkdir -p ~/.fonts/truetype && ln -s $PWD/fonts/truetype/roboto ~/.fonts/truetype/roboto
+```
