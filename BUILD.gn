@@ -75,6 +75,8 @@ executable("flutter_embedder_example") {
     "FLUTTER_EXAMPLE_ROOT=\"$flutter_example_root\"",
     "FLUTTER_GIT_ROOT=\"$flutter_git_root\"",
   ]
+  #cflags = [ "-static" ]
+  #ldflags = [ "-static" ]
   deps = [ ":flutter_embedder" ]
 }
 
