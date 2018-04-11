@@ -25,7 +25,7 @@
 #include <string>
 
 #include <embedder.h>
-#include <flutter_desktop_embedding/file_chooser_plugin.h>
+//#include <flutter_desktop_embedding/file_chooser_plugin.h>
 #include <flutter_desktop_embedding/plugin_handler.h>
 
 static_assert(FLUTTER_ENGINE_VERSION == 1, "");
@@ -150,7 +150,7 @@ static void GLFWmouseButtonCallback(GLFWwindow *window, int key, int action,
 static void GLFWKeyCallback(GLFWwindow *window, int key, int scancode,
                             int action, int mods) {
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-    glfwSetWindowShouldClose(window, GLFW_TRUE);
+    glfwSetWindowShouldClose(window, 1/*GLFW_TRUE*/);
   }
 }
 
@@ -265,7 +265,7 @@ GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
   }
   FlutterEmbedderState *state = new FlutterEmbedderState();
   state->plugin_handler = std::make_unique<PluginHandler>();
-  state->plugin_handler->AddPlugin(std::make_unique<FileChooserPlugin>());
+  //state->plugin_handler->AddPlugin(std::make_unique<FileChooserPlugin>());
   state->engine = flutter_engine_run_result;
   glfwSetWindowUserPointer(window, state);
   int width, height;
