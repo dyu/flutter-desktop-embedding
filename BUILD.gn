@@ -1,38 +1,16 @@
+#flutter_engine_dir = "../../engine"
 #flutter_engine_build = "host_release"
 
 lib_dir = "linux/library"
 
 config("flutter_embedder_config") {
-  include_dirs = [ "$lib_dir/include" ]
-}
-
-shared_library("flutter_embedder") {
-  sources = [
-    "$lib_dir/src/flutter_embedder.cc",
-    "$lib_dir/src/plugin_handler.cc",
-  ]
   include_dirs = [
     "$lib_dir/include",
-    "/usr/include/gtk-3.0",
-    "/usr/include/at-spi2-atk/2.0",
-    "/usr/include/at-spi-2.0",
-    "/usr/include/dbus-1.0",
-    "/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
-    "/usr/include/gio-unix-2.0",
-    "/usr/include/mirclient",
-    "/usr/include/mircore",
-    "/usr/include/mircookie",
-    "/usr/include/cairo",
-    "/usr/include/pango-1.0",
-    "/usr/include/harfbuzz",
-    "/usr/include/atk-1.0",
-    "/usr/include/pixman-1",
-    "/usr/include/freetype2",
-    "/usr/include/libpng12",
-    "/usr/include/gdk-pixbuf-2.0",
-    "/usr/include/glib-2.0",
-    "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
     "/usr/include/jsoncpp",
+  ]
+  ldflags = [
+    "-lflutter_engine",
+    "-Wl,-rpath=\$ORIGIN/lib",
   ]
   lib_dirs = [
     "lib",
@@ -52,13 +30,45 @@ shared_library("flutter_embedder") {
     "epoxy",
     "X11",
     "jsoncpp",
-    "glfw",
     "GL",
+    "glfw",
   ]
-  ldflags = [
-    "-lflutter_engine",
-    "-Wl,-rpath=\$ORIGIN/lib",
+}
+
+shared_library("flutter_embedder") {
+  sources = [
+    "$lib_dir/src/flutter_embedder.cc",
+    "$lib_dir/src/plugin_handler.cc",
+  ]
+  include_dirs = [
+    "/usr/include/gtk-3.0",
+    "/usr/include/at-spi2-atk/2.0",
+    "/usr/include/at-spi-2.0",
+    "/usr/include/dbus-1.0",
+    "/usr/lib/x86_64-linux-gnu/dbus-1.0/include",
+    "/usr/include/gio-unix-2.0",
+    "/usr/include/mirclient",
+    "/usr/include/mircore",
+    "/usr/include/mircookie",
+    "/usr/include/cairo",
+    "/usr/include/pango-1.0",
+    "/usr/include/harfbuzz",
+    "/usr/include/atk-1.0",
+    "/usr/include/pixman-1",
+    "/usr/include/freetype2",
+    "/usr/include/libpng12",
+    "/usr/include/gdk-pixbuf-2.0",
+    "/usr/include/glib-2.0",
+    "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
   ]
   
   public_configs = [ ":flutter_embedder_config" ]
 }
+
+#executable("flutter_embedder_example") {
+#  sources = [
+#    "linux/example/flutter_embedder_example.cc",
+#  ]
+#  deps = [ ":flutter_embedder" ]
+#}
+
