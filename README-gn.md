@@ -1,3 +1,8 @@
+## Fetch deps
+```sh
+./deps.sh
+```
+
 ## Build via GN
 1. `git clone --depth 1 --single-branch -b cpp14 https://github.com/dyu/gn-build`
 
