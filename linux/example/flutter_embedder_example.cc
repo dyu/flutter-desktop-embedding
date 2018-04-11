@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
   #endif
   
   if (!glfwInit()) {
-    std::cout << "Couldn't init GLFW";
+    std::cout << "Couldn't init GLFW\n";
   }
   // Arguments for the Flutter Engine.
   int arg_count = 2;
