@@ -14,7 +14,7 @@ config("flutter_embedder_config") {
   ldflags = [
     "-lglfw",
     "-lflutter_engine",
-    "-Wl,-rpath=\$ORIGIN/lib",
+    "-Wl,-rpath=\$ORIGIN/../lib",
   ]
   lib_dirs = [
     "lib",
