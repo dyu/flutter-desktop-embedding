@@ -17,8 +17,18 @@
 #include <flutter_desktop_embedding/flutter_embedder.h>
 
 int main(int argc, char **argv) {
+  #ifdef FLUTTER_EXAMPLE_ROOT
+  std::string flutter_example_root(FLUTTER_EXAMPLE_ROOT);
+  #else
   std::string flutter_example_root = "../example_flutter";
+  #endif
+  
+  #ifdef FLUTTER_GIT_ROOT
+  std::string flutter_git_root(FLUTTER_GIT_ROOT);
+  #else
   std::string flutter_git_root = "../../flutter";
+  #endif
+  
   if (!glfwInit()) {
     std::cout << "Couldn't init GLFW";
   }
