@@ -12,13 +12,18 @@
 
 4. `ninja -C gn-out`
 
+See https://github.com/flutter/flutter/issues/14438 if you have problems building the flutter engine
+
 ## Install fonts
 ```sh
 sudo apt-get install fonts-roboto
 
 # or link the bundled fonts
 sudo ln -s $PWD/fonts/truetype/roboto /usr/share/fonts/truetype/roboto
-
 ```
 
-See https://github.com/flutter/flutter/issues/14438 if you have problems building the flutter engine
+## Link and build the app
+```sh
+ln -s example_flutter app
+./build.sh
+```
