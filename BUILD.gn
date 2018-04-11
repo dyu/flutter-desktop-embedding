@@ -76,6 +76,10 @@ executable("flutter_embedder_example") {
     "FLUTTER_EXAMPLE_ROOT=\"$flutter_example_root\"",
     "FLUTTER_GIT_ROOT=\"$flutter_git_root\"",
   ]
+  libs = [
+    "glfw",
+    "flutter_engine",
+  ]
   ldflags = [ "-shared", "-fPIC" ]
   deps = [ ":flutter_embedder" ]
 }
