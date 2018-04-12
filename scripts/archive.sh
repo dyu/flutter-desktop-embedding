@@ -8,6 +8,6 @@ OUT_DIR=target/bin
 
 TAR_FILE=$OUT_DIR/fde-linux-x64.tar.gz
 
-[ ! -e target/app ] && cd target && ln -s ../gn-out/flutter_embedder_example app && cd ..
+[ ! -e target/run ] && cd target && ln -s ../gn-out/run && cd ..
 
-tar --dereference -cvzf $TAR_FILE target/app lib/* app/build/flutter_assets/*
+tar --dereference -cvzf $TAR_FILE target/run lib/* app/build/flutter_assets/*
