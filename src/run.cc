@@ -33,6 +33,7 @@ static bool fillOpts(flutter_desktop_embedding::Opts& opts, std::string& entry)
         return false;
     }
     
+    size_t colon;
     bool ok = true;
     switch (entry[1])
     {
@@ -50,6 +51,17 @@ static bool fillOpts(flutter_desktop_embedding::Opts& opts, std::string& entry)
             break;
         case 't':
             opts.title.assign(entry.data() + 3, entry.size() - 3);
+            break;
+        case 'e':
+            if (std::string::npos != (colon = entry.find(':')) && colon != 3)
+            {
+                entry[colon] = '\0';
+                setenv(entry.data() + 3, entry.c_str() + colon + 1, 0);
+            }
+            else
+            {
+                setenv(entry.c_str() + 3, "1", 0);
+            }
             break;
         default:
             std::cout << "Unknown option: " << entry << std::endl;
@@ -75,7 +87,8 @@ static bool fillOpts(flutter_desktop_embedding::Opts& opts, const char* argv[], 
             while (isSPCRLF(to.back()))
                 to.pop_back();
             
-            if (!fillOpts(opts, to))
+            // support comments
+            if (!to.empty() && '#' != to.front() && !fillOpts(opts, to))
                 return false;
         }
         
