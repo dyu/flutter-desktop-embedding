@@ -255,6 +255,7 @@ GLFWwindow *CreateFlutterWindow(Opts& opts,
   if (window == nullptr) {
     return nullptr;
   }
+  glfwSetWindowPos(window, opts.x, opts.y);
   GLFWClearCanvas(window);
   auto flutter_engine_run_result = RunFlutterEngine(
       window, main_path, assets_path, packages_path, icu_data_path, argc, argv);
