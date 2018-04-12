@@ -235,26 +235,23 @@ bool AddPlugin(GLFWwindow *flutter_window, std::unique_ptr<Plugin> plugin) {
   return state->plugin_handler->AddPlugin(std::move(plugin));
 }
 
-GLFWwindow *CreateFlutterWindowInSnapshotMode(size_t initial_width,
-                                              size_t initial_height,
+GLFWwindow *CreateFlutterWindowInSnapshotMode(Opts& opts,
                                               const std::string &assets_path,
                                               const std::string &icu_data_path,
-                                              int argc, char **argv,
-                                              const char* title) {
-  return CreateFlutterWindow(initial_width, initial_height, "", assets_path, "",
-                             icu_data_path, argc, argv, title);
+                                              int argc, char **argv) {
+  return CreateFlutterWindow(opts, "", assets_path, "",
+                             icu_data_path, argc, argv);
 }
 
-GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
+GLFWwindow *CreateFlutterWindow(Opts& opts,
                                 const std::string &main_path,
                                 const std::string &assets_path,
                                 const std::string &packages_path,
-                                const std::string &icu_data_path, int argc,
-                                char **argv,
-                                const char* title) {
+                                const std::string &icu_data_path, 
+                                int argc, char **argv) {
   gtk_init(0, nullptr);
-  auto window = glfwCreateWindow(initial_width, initial_height,
-                                 title ? title : kDefaultWindowTitle, NULL, NULL);
+  auto window = glfwCreateWindow(opts.w, opts.h,
+                                 opts.title.c_str(), NULL, NULL);
   if (window == nullptr) {
     return nullptr;
   }

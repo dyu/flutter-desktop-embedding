@@ -26,6 +26,17 @@
 
 namespace flutter_desktop_embedding {
 
+struct Opts
+{
+    int x{ 0 };
+    int y{ 0 };
+    
+    int w{ 640 }; // width
+    int h{ 480 }; // height
+    
+    std::string title{ "Flutter" };
+};
+
 // Creates a GLFW Window running a Flutter Application.
 //
 // glfwInit() must be called prior to this function.
@@ -36,13 +47,12 @@ namespace flutter_desktop_embedding {
 //
 // Returns a null pointer in the event of an error. The caller owns the pointer
 // when it is non-null.
-GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
+GLFWwindow *CreateFlutterWindow(Opts& opts,
                                 const std::string &main_path,
                                 const std::string &assets_path,
                                 const std::string &packages_path,
                                 const std::string &icu_data_path, int argc,
-                                char **argv,
-                                const char* title = nullptr);
+                                char **argv);
 
 // Creates a GLFW Window running a Flutter Application in snapshot mode.
 //
@@ -57,12 +67,10 @@ GLFWwindow *CreateFlutterWindow(size_t initial_width, size_t initial_height,
 //
 // Returns a null pointer in the event of an error. The caller owns the pointer
 // when it is non-null.
-GLFWwindow *CreateFlutterWindowInSnapshotMode(size_t initial_width,
-                                              size_t initial_height,
+GLFWwindow *CreateFlutterWindowInSnapshotMode(Opts& opts,
                                               const std::string &assets_path,
                                               const std::string &icu_data_path,
-                                              int argc, char **argv,
-                                              const char* title = nullptr);
+                                              int argc, char **argv);
 
 // Adds a plugin to the flutter_window.
 //

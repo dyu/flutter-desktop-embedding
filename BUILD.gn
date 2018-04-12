@@ -95,3 +95,12 @@ executable("flutter_embedder_example") {
   deps = [ ":flutter_embedder" ]
 }
 
+executable("run") {
+  sources = [
+    "src/run.cc",
+  ]
+  #cflags = [ "-static" ]
+  #ldflags = [ "-static" ]
+  deps = [ ":flutter_embedder" ]
+}
+

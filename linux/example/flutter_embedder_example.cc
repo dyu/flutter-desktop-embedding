@@ -41,15 +41,17 @@ int main(int argc, char **argv) {
       "--dart-non-checked-mode",
       NULL,
   };
+  
+  flutter_desktop_embedding::Opts opts;
+  #ifdef FLUTTER_TITLE
+  opts.title.assign(FLUTTER_TITLE);
+  #endif
+  
   auto window = flutter_desktop_embedding::CreateFlutterWindowInSnapshotMode(
-      640, 480, flutter_example_root + "/build/flutter_assets",
+      opts,
+      flutter_example_root + "/build/flutter_assets",
       flutter_git_root + "/bin/cache/artifacts/engine/linux-x64/icudtl.dat",
-      arg_count, const_cast<char **>(args_arr),
-      #ifdef FLUTTER_TITLE
-      FLUTTER_TITLE);
-      #else
-      "Flutter");
-      #endif
+      arg_count, const_cast<char **>(args_arr));
   if (window == nullptr) {
     glfwTerminate();
     return EXIT_FAILURE;
