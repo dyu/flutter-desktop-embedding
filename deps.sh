@@ -19,4 +19,5 @@ GIT_CLONE='git clone --depth 1 --single-branch -b'
 mkdir -p deps && cd deps
 
 [ -e glfw ] || $GIT_CLONE gn https://github.com/dyu/glfw.git
+[ -e jsoncpp ] || $GIT_CLONE gn https://github.com/dyu/jsoncpp.git
 

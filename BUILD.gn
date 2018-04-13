@@ -44,7 +44,6 @@ config("flutter_embedder_config") {
     "glib-2.0",
     "epoxy",
     "X11",
-    "jsoncpp",
     "GL",
     
     "flutter_engine",
@@ -78,7 +77,10 @@ static_library("flutter_embedder") {
     "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
   ]
   public_configs = [ ":flutter_embedder_config" ]
-  public_deps = [ "//deps/glfw:glfw" ]
+  deps = [
+    "//deps/glfw:glfw",
+    "//deps/jsoncpp:jsoncpp",
+  ]
 }
 
 executable("flutter_embedder_example") {
