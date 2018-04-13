@@ -29,6 +29,8 @@ ln -s example_flutter app
 ```
 
 ### Memory usage of the app: `example_flutter`
+- [ps_mem.py](https://github.com/pixelb/ps_mem) -p $PROCESS_ID
+
 Ubuntu 14.04 x64
 ```
  Private  +   Shared  =  RAM used	Program
