@@ -49,6 +49,8 @@ Ubuntu 16.04 x64
 =================================
 ```
 
+Note: the binaries are built in release mode `host_release`
+
 ### Download and run the prebuilt binary to test on your system
 ```sh
 wget -O fde-linux-x64.tar.gz 'https://onedrive.live.com/download?cid=73A9A646B31A141F&resid=73A9A646B31A141F%21469&authkey=AKdY45YMew02dZg'
