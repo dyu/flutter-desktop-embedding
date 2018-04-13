@@ -31,11 +31,11 @@ ln -s example_flutter app
 ### Memory usage of the app: `example_flutter`
 Ubuntu 14.04 x64
 ```
-Private  +   Shared  =  RAM used	Program
+ Private  +   Shared  =  RAM used	Program
 
-98.7 MiB +   1.4 MiB = 100.1 MiB	run
+ 98.7 MiB +   1.4 MiB = 100.1 MiB	run
 ---------------------------------
-                      100.1 MiB
+                        100.1 MiB
 =================================
 ```
 
