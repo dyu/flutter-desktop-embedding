@@ -48,3 +48,14 @@ Ubuntu 16.04 x64
                         118.3 MiB
 =================================
 ```
+
+### Download and run the prebuilt binary to test on your system
+```sh
+wget -O fde-linux-x64.tar.gz 'https://onedrive.live.com/download?cid=73A9A646B31A141F&resid=73A9A646B31A141F%21469&authkey=AKdY45YMew02dZg'
+tar -xzf fde-linux-x64.tar.gz
+cd fde-linux-x64
+./target/run
+```
+
+Make sure the font `roboto` is already installed for the app to run properly (`sudo apt-get install fonts-roboto`)
+
